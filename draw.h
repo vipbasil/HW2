@@ -10,7 +10,8 @@ class Draw
 {
     public:
         Draw( QOpenGLShaderProgram *program, int LvertexAttr, int LcolorAttr, int LmodelViewMatrix);
-        void addSphereR(std::vector<float> point, std::vector<float> color, float radius = 0.5, unsigned int tessellation = 36);
+        void addSphereR(float radius = 0.5, unsigned int tessellation = 36);
+        void addConeR(float radius  = 0.5 , float height = 1, unsigned int tessellation  = 36);
 
         void deleteObject(int index);
         int count();
@@ -20,13 +21,16 @@ class Draw
         void setHeight(unsigned int );
         void setWidth(unsigned int );
 
+        std::vector<float>selectedColor;
+        std::vector< QMatrix4x4 > transformations;
+
 
    private:
 
         std::vector< std::vector<float> > vertices;
         std::vector< std::vector<float> > colors;
         std::vector< std::vector<float> > frame_colors;
-        std::vector< QMatrix4x4 > transformations;
+
 
         QOpenGLShaderProgram *shader_program;
 

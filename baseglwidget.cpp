@@ -111,7 +111,7 @@ void BaseGLWidget::paintGL(){
     pen->addLine(vertices, onecolor, 0.5f);
 
     */
-
+    glClear(GL_COLOR_BUFFER_BIT);
     pen->Paint();
     //release the  binded shader program
     shader_program.release();

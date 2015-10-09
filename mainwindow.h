@@ -18,6 +18,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_colorButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_Tx_sliderReleased();
+
 private:
     Ui::MainWindow *ui;
 };

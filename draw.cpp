@@ -7,19 +7,20 @@ colorAttr(LcolorAttr),
 modelViewMatrix(LmodelViewMatrix)
 {
     countAttr = 0;
+    selectedColor.resize(3);
+    selectedColor[0] = 0.9f;
+    selectedColor[1] = 0.9f;
+    selectedColor[2] = 0.9f;
 }
 
 
-void Draw::addSphereR(std::vector<float> point, std::vector<float> color, float radius, unsigned int tessellation)
+void Draw::addSphereR( float radius, unsigned int tessellation)
 {
     //prepare afine transformation
 
     QMatrix4x4 matrix;
     matrix.setToIdentity();
-    matrix.translate(point[0], point[1], point[2]);
     transformations.push_back(matrix);
-
-
 
     unsigned int i = 0;
     std::vector<float> local_vertices;
@@ -68,13 +69,54 @@ void Draw::addSphereR(std::vector<float> point, std::vector<float> color, float 
     allframe_color.resize(array_length);
     i = 0;
     while (i < array_length){
-        allcolor[i + 0] = color[0];
-        allcolor[i + 1] = color[1];
-        allcolor[i + 2] = color[2];
+        allcolor[i + 0] = selectedColor[0];
+        allcolor[i + 1] = selectedColor[1];
+        allcolor[i + 2] = selectedColor[2];
 
-        allframe_color[i + 0] = color[0] * 0.9f;
-        allframe_color[i + 1] = color[1] * 0.9f;
-        allframe_color[i + 2] = color[2] * 0.9f;
+        allframe_color[i + 0] = selectedColor[0] * 0.9f;
+        allframe_color[i + 1] = selectedColor[1] * 0.9f;
+        allframe_color[i + 2] = selectedColor[2] * 0.9f;
+        i += 3;
+    }
+    colors.push_back(allcolor);
+    frame_colors.push_back(allframe_color);
+
+
+}
+void Draw::addConeR(float radius, float height, unsigned int tessellation)
+{
+    //prepare afine transformation
+
+    QMatrix4x4 matrix;
+    matrix.setToIdentity();
+    transformations.push_back(matrix);
+
+    unsigned int i = 0;
+    std::vector<float> local_vertices;
+    /*
+    Students work
+    1. Add the cone's triangles
+    2. Add the base's triangles
+     */
+
+
+    vertices.push_back(local_vertices);
+
+    //prepare colors array
+    std::vector<float> allcolor;
+    std::vector<float> allframe_color;
+    unsigned int array_length = local_vertices.size();
+    allcolor.resize(array_length);
+    allframe_color.resize(array_length);
+    i = 0;
+    while (i < array_length){
+        allcolor[i + 0] = selectedColor[0];
+        allcolor[i + 1] = selectedColor[1];
+        allcolor[i + 2] = selectedColor[2];
+
+        allframe_color[i + 0] = selectedColor[0] * 0.9f;
+        allframe_color[i + 1] = selectedColor[1] * 0.9f;
+        allframe_color[i + 2] = selectedColor[2] * 0.9f;
         i += 3;
     }
     colors.push_back(allcolor);
