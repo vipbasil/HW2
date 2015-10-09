@@ -11,6 +11,7 @@ class BaseGLWidget : public QOpenGLWidget{
 
     public:
         BaseGLWidget(QWidget * parent = 0);
+        Draw *pen;
     private:
 
         void initializeGL();
@@ -22,7 +23,7 @@ class BaseGLWidget : public QOpenGLWidget{
         int colorAttr;
         int matrixUniform;
         int modelViewMatrix;
-        Draw *pen;
+
 
 };
 

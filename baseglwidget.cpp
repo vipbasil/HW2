@@ -47,7 +47,7 @@ void BaseGLWidget::paintGL(){
 
     //draw a triangle as example
 
-    std::vector<float> vertices;
+    /*std::vector<float> vertices;
     std::vector<float> onecolor;
     std::vector<float> allcolors;
 
@@ -110,7 +110,7 @@ void BaseGLWidget::paintGL(){
 
     pen->addLine(vertices, onecolor, 0.5f);
 
-
+    */
 
     pen->Paint();
     //release the  binded shader program
