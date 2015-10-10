@@ -12,6 +12,7 @@ public:
     std::vector<float> colors;
     std::vector<float> frame_colors;
     QMatrix4x4 get_transformations();
+    void set_color(float R, float G, float B);
     float RotationX, RotationY, RotationZ;
     float ScaleX, ScaleY, ScaleZ;
     float TranslationX, TranslationY, TranslationZ;

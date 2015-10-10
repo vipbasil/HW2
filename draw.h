@@ -19,6 +19,7 @@ class Draw
         Draw( QOpenGLShaderProgram *program, int LvertexAttr, int LcolorAttr, int LmodelViewMatrix);
         void addSphereR(float radius = 0.5, unsigned int tessellation = 36);
         void addConeR(float radius  = 0.5 , float height = 1, unsigned int tessellation  = 36);
+        void addCylinderR(float radius  = 0.5 , float height = 1, unsigned int tessellation  = 36);
 
         void deleteObject(int index);
         int count();

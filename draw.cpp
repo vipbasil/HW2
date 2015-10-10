@@ -16,14 +16,7 @@ modelViewMatrix(LmodelViewMatrix)
 
 void Draw::addSphereR( float radius, unsigned int tessellation)
 {
-    //prepare afine transformation
     Object3D obj;
-
-    /*QMatrix4x4 matrix;
-    matrix.setToIdentity();
-    transformations.push_back(matrix);
-    */
-
 
     unsigned int i = 0;
     float alpha = 0.0f;
@@ -82,44 +75,141 @@ void Draw::addSphereR( float radius, unsigned int tessellation)
 }
 void Draw::addConeR(float radius, float height, unsigned int tessellation)
 {
-    //prepare afine transformation
-
-    QMatrix4x4 matrix;
-    matrix.setToIdentity();
-    transformations.push_back(matrix);
+    Object3D obj;
 
     unsigned int i = 0;
-    std::vector<float> local_vertices;
-    /*
-    Students work
-    1. Add the cone's triangles
-    2. Add the base's triangles
-     */
+    float alpha = 0.0f;
+    float step = 360 / tessellation;
+      for (alpha = step; alpha <= 360; alpha += step ){
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(0);
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(0);
 
 
-    vertices.push_back(local_vertices);
+    }
+
 
     //prepare colors array
-    std::vector<float> allcolor;
-    std::vector<float> allframe_color;
-    unsigned int array_length = local_vertices.size();
-    allcolor.resize(array_length);
-    allframe_color.resize(array_length);
+
+    unsigned int array_length = obj.vertices.size();
+    obj.colors.resize(array_length);
+    obj.frame_colors.resize(array_length);
     i = 0;
     while (i < array_length){
-        allcolor[i + 0] = selectedColor[0];
-        allcolor[i + 1] = selectedColor[1];
-        allcolor[i + 2] = selectedColor[2];
+        obj.colors[i + 0] = selectedColor[0];
+        obj.colors[i + 1] = selectedColor[1];
+        obj.colors[i + 2] = selectedColor[2];
 
-        allframe_color[i + 0] = selectedColor[0] * 0.9f;
-        allframe_color[i + 1] = selectedColor[1] * 0.9f;
-        allframe_color[i + 2] = selectedColor[2] * 0.9f;
+        obj.frame_colors[i + 0] = selectedColor[0] * 0.9f;
+        obj.frame_colors[i + 1] = selectedColor[1] * 0.9f;
+        obj.frame_colors[i + 2] = selectedColor[2] * 0.9f;
         i += 3;
     }
-    colors.push_back(allcolor);
-    frame_colors.push_back(allframe_color);
+    objects.push_back(obj);
+}
+void Draw::addCylinderR(float radius, float height, unsigned int tessellation)
+{
+    Object3D obj;
+
+    unsigned int i = 0;
+    float alpha = 0.0f;
+    float step = 360 / tessellation;
+      for (alpha = step; alpha <= 360; alpha += step ){
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(0);
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
 
 
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+
+
+          obj.vertices.push_back(radius * cos(alpha * M_PI / 180));
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(radius * sin(alpha * M_PI / 180));
+
+          obj.vertices.push_back(radius * cos((alpha - step) * M_PI / 180));
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(radius * sin((alpha - step) * M_PI / 180));
+
+          obj.vertices.push_back(0);
+          obj.vertices.push_back(height);
+          obj.vertices.push_back(0);
+
+
+    }
+
+
+    //prepare colors array
+
+    unsigned int array_length = obj.vertices.size();
+    obj.colors.resize(array_length);
+    obj.frame_colors.resize(array_length);
+    i = 0;
+    while (i < array_length){
+        obj.colors[i + 0] = selectedColor[0];
+        obj.colors[i + 1] = selectedColor[1];
+        obj.colors[i + 2] = selectedColor[2];
+
+        obj.frame_colors[i + 0] = selectedColor[0] * 0.9f;
+        obj.frame_colors[i + 1] = selectedColor[1] * 0.9f;
+        obj.frame_colors[i + 2] = selectedColor[2] * 0.9f;
+        i += 3;
+    }
+    objects.push_back(obj);
 }
 void Draw::deleteObject(int index)
 {

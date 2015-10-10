@@ -8,6 +8,7 @@ void BaseGLWidget::initializeGL(){
 
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
+
     //shaders link
     QOpenGLShader vShader(QOpenGLShader::Vertex);
     vShader.compileSourceFile(":/files/Shaders/vShader.glsl");
@@ -15,6 +16,10 @@ void BaseGLWidget::initializeGL(){
 
     QOpenGLShader fShader(QOpenGLShader::Fragment);
     fShader.compileSourceFile(":/files/Shaders/fShader.glsl");
+
+    glClearDepth(1.0f);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_DEPTH_TEST);
 
     shader_program.addShader(&vShader);
     shader_program.addShader(&fShader);
@@ -44,7 +49,7 @@ void BaseGLWidget::paintGL(){
     matrix.ortho( -ORTHO_DIST, ORTHO_DIST, -ORTHO_DIST, ORTHO_DIST, ORTHO_DIST, -ORTHO_DIST);
     shader_program.setUniformValue(matrixUniform, matrix);
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     pen->Paint();
     //release the  binded shader program
     shader_program.release();

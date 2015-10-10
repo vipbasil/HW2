@@ -99,9 +99,17 @@
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>3</number>
        </property>
        <widget class="QWidget" name="page_4">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>141</width>
+          <height>123</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>Select</string>
         </attribute>
@@ -180,7 +188,7 @@
         <attribute name="label">
          <string>Rotation</string>
         </attribute>
-        <widget class="QSlider" name="Tz_2">
+        <widget class="QSlider" name="Rz">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -193,7 +201,7 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-        <widget class="QSlider" name="Tx_2">
+        <widget class="QSlider" name="Rx">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -206,7 +214,7 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-        <widget class="QSlider" name="Ty_2">
+        <widget class="QSlider" name="Ry">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -221,10 +229,18 @@
         </widget>
        </widget>
        <widget class="QWidget" name="page_3">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>141</width>
+          <height>123</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>Scale</string>
         </attribute>
-        <widget class="QSlider" name="Tz_3">
+        <widget class="QSlider" name="Sz">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -237,7 +253,7 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-        <widget class="QSlider" name="Tx_3">
+        <widget class="QSlider" name="Sx">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -250,7 +266,7 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-        <widget class="QSlider" name="Ty_3">
+        <widget class="QSlider" name="Sy">
          <property name="geometry">
           <rect>
            <x>0</x>
