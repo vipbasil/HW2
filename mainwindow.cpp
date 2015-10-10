@@ -47,12 +47,9 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_Tx_sliderReleased()
 {
-    float x = (float)ui->Tx->value() / (float)ui->Tx->maximum() * 4 - 2;
+    float x = (float)ui->Tx->value() / (float)ui->Tx->maximum() * ORTHO_DIST * 2 - ORTHO_DIST;
     int objectIndex = ui->objectList->currentRow();
-    QMatrix4x4 matrix;
-    matrix.setToIdentity();
-    matrix.translate(x,0,0);
-    ui->widget->pen->transformations.at(objectIndex) = matrix;
+    ui->widget->pen->objects.at(objectIndex).TranslationX = x;
     ui->widget->repaint();
-    //ui->widget->pen->transformations.push_back(matrix);
+
 }

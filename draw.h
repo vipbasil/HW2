@@ -3,7 +3,14 @@
 #include <vector>
 #include <QOpenGLShaderProgram>
 #include <math.h>
+#include "object3d.h"
+#ifndef M_PI
+#    define M_PI 3.14159265358979323846
+#endif
 
+#ifndef ORTHO_DIST
+#    define ORTHO_DIST 2.0f
+#endif
 
 
 class Draw
@@ -20,7 +27,7 @@ class Draw
         void Paint( int index = -1);
         void setHeight(unsigned int );
         void setWidth(unsigned int );
-
+        std::vector<Object3D> objects;
         std::vector<float>selectedColor;
         std::vector< QMatrix4x4 > transformations;
 

@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     baseglwidget.cpp \
-    draw.cpp
+    draw.cpp \
+    object3d.cpp
 
 HEADERS  += mainwindow.h \
     baseglwidget.h \
-    draw.h
+    draw.h \
+    object3d.h
 
 FORMS    += mainwindow.ui
 
